@@ -5,6 +5,9 @@ import com.baodientu.model.dao.TrainDAO;
 import java.util.List;
 
 public class TrainBO {
+    public List<Train> searchTrains(String routeId, String departureDate, String departureTime, String departureStation, String arrivalStation) {
+        return trainDAO.searchTrains(routeId, departureDate, departureTime, departureStation, arrivalStation);
+    }
     private TrainDAO trainDAO = new TrainDAO();
 
     public List<Train> getAllTrains() {

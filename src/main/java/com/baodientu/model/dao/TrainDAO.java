@@ -6,6 +6,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrainDAO {
+    public List<Train> searchTrains(String routeId, String departureDate, String departureTime, String departureStation, String arrivalStation) {
+        List<Train> trains = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT * FROM train WHERE 1=1");
+        List<Object> params = new ArrayList<>();
+        if (routeId != null && !routeId.trim().isEmpty()) {
+            sql.append(" AND route_id = ?");
+            params.add(routeId);
+        }
+        if (departureDate != null && !departureDate.trim().isEmpty()) {
+            sql.append(" AND DATE(departure_time) = ?");
+            params.add(departureDate);
+        }
+        if (departureTime != null && !departureTime.trim().isEmpty()) {
+            sql.append(" AND TIME(departure_time) = ?");
+            params.add(departureTime);
+        }
+        if (departureStation != null && !departureStation.trim().isEmpty()) {
+            sql.append(" AND departure_station = ?");
+            params.add(departureStation);
+        }
+        if (arrivalStation != null && !arrivalStation.trim().isEmpty()) {
+            sql.append(" AND arrival_station = ?");
+            params.add(arrivalStation);
+        }
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Train train = new Train();
+                    train.setTrainId(rs.getString("train_id"));
+                    train.setTrainType(rs.getString("train_type"));
+                    train.setDepartureTime(rs.getString("departure_time"));
+                    train.setArrivalTime(rs.getString("arrival_time"));
+                    train.setCarriageCount(rs.getInt("carriage_count"));
+                    train.setRouteId(rs.getString("route_id"));
+                    train.setDepartureStation(rs.getString("departure_station"));
+                    train.setArrivalStation(rs.getString("arrival_station"));
+                    trains.add(train);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trains;
+    }
     private Connection getConnection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/qlt";
         String user = "root";

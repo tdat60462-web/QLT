@@ -8,6 +8,14 @@
     <title>Chi tiết chuyến tàu</title>
 </head>
 <body>
+<% String message = (String) request.getAttribute("message");
+   String error = (String) request.getAttribute("error");
+   if (message != null) { %>
+    <div style="color: green;"><%= message %></div>
+<% }
+   if (error != null) { %>
+    <div style="color: red;"><%= error %></div>
+<% } %>
 <h2>Chi tiết chuyến tàu</h2>
 <% if (train != null) { %>
 <table border="1">

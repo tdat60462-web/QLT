@@ -9,6 +9,14 @@
     <title><%= isEdit ? "Sửa chuyến tàu" : "Thêm chuyến tàu" %></title>
 </head>
 <body>
+<% String message = (String) request.getAttribute("message");
+   String error = (String) request.getAttribute("error");
+   if (message != null) { %>
+    <div style="color: green;"><%= message %></div>
+<% }
+   if (error != null) { %>
+    <div style="color: red;"><%= error %></div>
+<% } %>
 <%@ include file="logout-link.jsp" %>
 <h2><%= isEdit ? "Sửa chuyến tàu" : "Thêm chuyến tàu mới" %></h2>
 <form method="post" action="/admin/train">
