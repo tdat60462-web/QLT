@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.baodientu.model.bean.Station" %>
+<%@ page import="quanlytau.model.bean.Station" %>
 <%
     Station station = (Station)request.getAttribute("station");
     boolean isEdit = (station != null);

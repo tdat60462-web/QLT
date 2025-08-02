@@ -34,7 +34,7 @@
 </form>
 <%-- Hiển thị kết quả nếu có --%>
 <% if (request.getAttribute("trains") != null) {
-    java.util.List<com.baodientu.model.bean.Train> trains = (java.util.List<com.baodientu.model.bean.Train>)request.getAttribute("trains");
+    java.util.List<quanlytau.model.bean.Train> trains = (java.util.List<quanlytau.model.bean.Train>)request.getAttribute("trains");
 %>
 <h3>Kết quả tra cứu</h3>
 <table border="1">
@@ -48,7 +48,7 @@
         <th>Ga đi</th>
         <th>Ga đến</th>
     </tr>
-    <% for (com.baodientu.model.bean.Train train : trains) { %>
+    <% for (quanlytau.model.bean.Train train : trains) { %>
     <tr>
         <td><a href="/detail?id=<%= train.getTrainId() %>"><%= train.getTrainId() %></a></td>
         <td><%= train.getTrainType() %></td>

@@ -5,19 +5,8 @@
          version="6.0">
     <display-name>QLT - Quản lý lịch tàu</display-name>
 
-    <!-- Cấu hình servlet nếu không dùng annotation -->
-    <!--
-    <servlet>
-        <servlet-name>AdminTrainServlet</servlet-name>
-        <servlet-class>com.baodientu.controller.AdminTrainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AdminTrainServlet</servlet-name>
-        <url-pattern>/admin/train</url-pattern>
-    </servlet-mapping>
-    -->
 
     <welcome-file-list>
-        <welcome-file>views/admin/index.jsp</welcome-file>
+        <welcome-file>views/indexmenu.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
