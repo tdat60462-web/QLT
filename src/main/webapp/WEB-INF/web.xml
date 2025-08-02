@@ -7,6 +7,6 @@
 
 
     <welcome-file-list>
-        <welcome-file>QLT/views/indexmenu.jsp</welcome-file>
+        <welcome-file>views/indexmenu.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
