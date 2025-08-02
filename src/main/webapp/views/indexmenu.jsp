@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            margin: 0;
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
             background: #fff;
             color: #222;
+            margin: 0;
         }
         .header {
             background: #111;
+            color: #fff;
             padding: 16px 0;
             display: flex;
             align-items: center;
@@ -24,21 +25,32 @@
         .logo {
             font-size: 2rem;
             font-weight: bold;
-            color: #fff;
-            margin-left: 40px;
-        }
-        .nav {
-            margin-right: 40px;
+            margin-left: 32px;
+            letter-spacing: 2px;
         }
         .nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 16px;
-            font-size: 1rem;
-            position: relative;
+            margin: 0 18px;
+            font-size: 1.1rem;
+            transition: color 0.2s;
         }
         .nav a.active, .nav a:hover {
             color: #1e90ff;
+        }
+        .nav .login-btn {
+            background: #1e90ff;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-left: 16px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .nav .login-btn:hover {
+            background: #1565c0;
         }
         .main {
             background: #fff;
@@ -58,6 +70,8 @@
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.10);
             background: #fff;
+        }
+    </style>
         }
         @media (max-width: 700px) {
             .main { padding: 20px 10px; }

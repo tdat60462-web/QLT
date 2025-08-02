@@ -7,21 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background: #f6f8fa;
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            color: #222;
             margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .login-box {
             background: #fff;
-            padding: 40px 32px 32px 32px;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-            min-width: 340px;
-            max-width: 90vw;
+            padding: 32px;
+            margin: 32px auto;
+            max-width: 400px;
         }
         h2 {
             text-align: center;
@@ -74,6 +71,7 @@
             margin-top: 12px;
             font-size: 1rem;
         }
+    </style>
     </style>
 </head>
 <body>
