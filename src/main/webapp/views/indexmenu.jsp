@@ -80,7 +80,7 @@
             <a href="/QLT/views/indexmenu.jsp" class="active">Trang chủ</a>           
             <a href="/QLT/views/public/lichTau.jsp" target="mainframe">Lịch tàu</a>
             <a href="/QLT/views/public/tuyenDuong.jsp" target="mainframe">Tuyến đường</a>
-            <a href="/QLT/views/public/lienHe.jsp" target="mainframe">Liên hệ</a>
+            <a href="/QLT/views/public/lienHe.jsp" target="mainframe">Liên hệ - góp ý</a>
             <a href="/QLT/views/admin/login.jsp" target="mainframe" style="background:#1e90ff; color:#fff; padding:8px 16px; border-radius:4px; margin-left:16px;">Đăng nhập</a>
         </div>
     </div>

@@ -49,40 +49,55 @@
             List<Map<String, String>> trains = new ArrayList<>();
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/qlt", "root", "");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
                 Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM Train");
+                String sql = "SELECT t.train_id, t.name AS train_name, t.type, r.route_id, s1.name AS departure_station, s2.name AS arrival_station, sch.departure_time, sch.arrival_time " +
+                    "FROM train t " +
+                    "JOIN route r ON t.train_id = r.train_id " +
+                    "JOIN station s1 ON r.departure_station_id = s1.station_id " +
+                    "JOIN station s2 ON r.arrival_station_id = s2.station_id " +
+                    "JOIN schedule sch ON r.route_id = sch.route_id ";
+                ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     Map<String, String> row = new HashMap<>();
-                    row.put("trainId", rs.getString("trainId"));
-                    row.put("trainType", rs.getString("trainType"));
-                    row.put("departureTime", rs.getString("departureTime"));
-                    row.put("departureStation", rs.getString("departureStation"));
-                    row.put("arrivalStation", rs.getString("arrivalStation"));
+                    row.put("train_id", rs.getString("train_id"));
+                    row.put("train_name", rs.getString("train_name"));
+                    row.put("type", rs.getString("type"));
+                    row.put("route_id", rs.getString("route_id"));
+                    row.put("departure_station", rs.getString("departure_station"));
+                    row.put("arrival_station", rs.getString("arrival_station"));
+                    row.put("departure_time", rs.getString("departure_time"));
+                    row.put("arrival_time", rs.getString("arrival_time"));
                     trains.add(row);
                 }
                 rs.close(); st.close(); conn.close();
-            } catch (Exception e) { out.print("<tr><td colspan='5' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
+            } catch (Exception e) { out.print("<tr><td colspan='8' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
         %>
         <table>
             <tr>
                 <th>Mã tàu</th>
+                <th>Tên tàu</th>
                 <th>Loại tàu</th>
-                <th>Giờ xuất phát</th>
+                <th>Mã tuyến</th>
                 <th>Ga đi</th>
                 <th>Ga đến</th>
+                <th>Giờ xuất phát</th>
+                <th>Giờ đến</th>
             </tr>
             <% for (Map<String, String> t : trains) { %>
             <tr>
-                <td><%= t.get("trainId") %></td>
-                <td><%= t.get("trainType") %></td>
-                <td><%= t.get("departureTime") %></td>
-                <td><%= t.get("departureStation") %></td>
-                <td><%= t.get("arrivalStation") %></td>
+                <td><%= t.get("train_id") %></td>
+                <td><%= t.get("train_name") %></td>
+                <td><%= t.get("type") %></td>
+                <td><%= t.get("route_id") %></td>
+                <td><%= t.get("departure_station") %></td>
+                <td><%= t.get("arrival_station") %></td>
+                <td><%= t.get("departure_time") %></td>
+                <td><%= t.get("arrival_time") %></td>
             </tr>
             <% } %>
         </table>
-        <p style="text-align:center;color:#888;">(Dữ liệu lấy từ CSDL bảng Train)</p>
+        <p style="text-align:center;color:#888;">(Dữ liệu lấy từ nhiều bảng: train, route, station, schedule)</p>
     </div>
 </body>
 </html>
