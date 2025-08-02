@@ -72,11 +72,6 @@
             background: #fff;
         }
     </style>
-        }
-        @media (max-width: 700px) {
-            .main { padding: 20px 10px; }
-        }
-    </style>
 </head>
 <body>
     <div class="header">
