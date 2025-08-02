@@ -9,6 +9,7 @@
     <title><%= isEdit ? "Sửa ga tàu" : "Thêm ga tàu" %></title>
 </head>
 <body>
+<%@ include file="logout-link.jsp" %>
 <h2><%= isEdit ? "Sửa ga tàu" : "Thêm ga tàu mới" %></h2>
 <form method="post" action="/admin/station">
     <input type="hidden" name="action" value="<%= isEdit ? "edit" : "add" %>" />

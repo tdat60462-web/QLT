@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+<%@ include file="logout-link.jsp" %>
 <h2>Danh sách ga tàu</h2>
 <a href="/admin/station?action=add">Thêm ga tàu mới</a>
 <table>

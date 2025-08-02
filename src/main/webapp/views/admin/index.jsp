@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+<%@ include file="logout-link.jsp" %>
 <h2>Danh sách chuyến tàu</h2>
 <a href="/admin/train?action=add">Thêm chuyến tàu mới</a>
 <table>
