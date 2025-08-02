@@ -8,9 +8,9 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #222;
-            color: #fff;
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            color: #222;
         }
         .header {
             background: #111;
@@ -18,6 +18,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
         .logo {
             font-size: 2rem;
@@ -39,7 +41,7 @@
             color: #1e90ff;
         }
         .main {
-            background: url('https://i.imgur.com/2QZb6zB.jpg') center/cover no-repeat;
+            background: #fff;
             min-height: 500px;
             display: flex;
             flex-direction: column;
@@ -47,14 +49,10 @@
             align-items: flex-start;
             padding: 80px 60px;
             position: relative;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
         }
-        .main::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.45);
-            z-index: 1;
-        }
+        /* Xóa lớp phủ tối, chỉ nền trắng */
         .main-content {
             position: relative;
             z-index: 2;
@@ -108,21 +106,16 @@
     <div class="header">
         <div class="logo">QLT</div>
         <div class="nav">
-            <a href="index.jsp" class="active">Trang chủ</a>
+            <a href="/QLT/views/indexmenu.jsp" class="active">Trang chủ</a>
             <a href="#">Giới thiệu</a>
             <a href="#">Dịch vụ</a>
             <a href="#">Bảng giá</a>
             <a href="#">Liên hệ</a>
-            <a href="login.jsp" style="background:#1e90ff; color:#fff; padding:8px 16px; border-radius:4px; margin-left:16px;">Đăng nhập hệ thống</a>
+            <a href="/QLT/views/admin/login.jsp" target="mainframe" style="background:#1e90ff; color:#fff; padding:8px 16px; border-radius:4px; margin-left:16px;">Đăng nhập</a>
         </div>
     </div>
     <div class="main">
-        <div class="main-content">
-            <h1><span>Thông tin</span> hành trình tàu</h1>
-            <p>Giải pháp theo dõi tàu thuyền toàn diện phục vụ quản lý nhà nước chuyên ngành và hỗ trợ các doanh nghiệp ra quyết định.</p>
-            <button class="btn btn-primary" onclick="location.href='login.jsp'">Đăng Nhập Hệ Thống</button>
-            <button class="btn btn-secondary" onclick="location.href='#'">Tìm Hiểu Thêm</button>
-        </div>
+        <iframe name="mainframe" src="/QLT/views/mainframe.jsp" style="width:100%;height:500px;border:1.5px solid #e0e0e0;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.10);z-index:2;position:relative;background:#fff;"></iframe>
     </div>
 </body>
 </html>

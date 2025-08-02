@@ -51,15 +51,18 @@ public class AdminTrainServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) action = "add";
-        String trainId = request.getParameter("trainId");
-        String trainType = request.getParameter("trainType");
-        String departureTime = request.getParameter("departureTime");
-        String arrivalTime = request.getParameter("arrivalTime");
-        int carriageCount = Integer.parseInt(request.getParameter("carriageCount"));
-        String routeId = request.getParameter("routeId");
-        String departureStation = request.getParameter("departureStation");
-        String arrivalStation = request.getParameter("arrivalStation");
-        Train train = new Train(trainId, trainType, departureTime, arrivalTime, carriageCount, routeId, departureStation, arrivalStation);
+        String trainIdStr = request.getParameter("trainId");
+        String name = request.getParameter("name");
+        String type = request.getParameter("type");
+        int trainId = 0;
+        if (trainIdStr != null && !trainIdStr.isEmpty()) {
+            try {
+                trainId = Integer.parseInt(trainIdStr);
+            } catch (NumberFormatException e) {
+                trainId = 0;
+            }
+        }
+        Train train = new Train(trainId, name, type);
         if ("edit".equals(action)) {
             trainBO.updateTrain(train);
         } else {

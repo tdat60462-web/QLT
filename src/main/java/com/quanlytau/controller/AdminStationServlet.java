@@ -51,9 +51,17 @@ public class AdminStationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) action = "add";
-        String stationId = request.getParameter("stationId");
+        String stationIdStr = request.getParameter("stationId");
         String name = request.getParameter("name");
         String address = request.getParameter("address");
+        int stationId = 0;
+        if (stationIdStr != null && !stationIdStr.isEmpty()) {
+            try {
+                stationId = Integer.parseInt(stationIdStr);
+            } catch (NumberFormatException e) {
+                stationId = 0;
+            }
+        }
         Station station = new Station(stationId, name, address);
         if ("edit".equals(action)) {
             stationBO.updateStation(station);

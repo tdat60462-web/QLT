@@ -26,7 +26,7 @@ public class StationDAO {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Station station = new Station();
-                station.setStationId(rs.getString("station_id"));
+                station.setStationId(rs.getInt("station_id"));
                 station.setName(rs.getString("name"));
                 station.setAddress(rs.getString("address"));
                 stations.add(station);
@@ -41,11 +41,11 @@ public class StationDAO {
         String sql = "SELECT * FROM station WHERE station_id = ?";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, stationId);
+            ps.setInt(1, Integer.parseInt(stationId));
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Station station = new Station();
-                    station.setStationId(rs.getString("station_id"));
+                    station.setStationId(rs.getInt("station_id"));
                     station.setName(rs.getString("name"));
                     station.setAddress(rs.getString("address"));
                     return station;
@@ -61,7 +61,7 @@ public class StationDAO {
         String sql = "INSERT INTO station (station_id, name, address) VALUES (?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, station.getStationId());
+            ps.setInt(1, station.getStationId());
             ps.setString(2, station.getName());
             ps.setString(3, station.getAddress());
             return ps.executeUpdate() > 0;
@@ -77,7 +77,7 @@ public class StationDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, station.getName());
             ps.setString(2, station.getAddress());
-            ps.setString(3, station.getStationId());
+            ps.setInt(3, station.getStationId());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -89,7 +89,7 @@ public class StationDAO {
         String sql = "DELETE FROM station WHERE station_id = ?";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, stationId);
+            ps.setInt(1, Integer.parseInt(stationId));
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

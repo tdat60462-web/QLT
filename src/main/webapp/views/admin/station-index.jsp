@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="quanlytau.model.bean.Station" %>
+<%@ page import="com.quanlytau.model.bean.Station" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="quanlytau.model.bean.Train" %>
+<%@ page import="com.quanlytau.model.bean.Train" %>
 <%
     Train train = (Train)request.getAttribute("train");
     boolean isEdit = (train != null);

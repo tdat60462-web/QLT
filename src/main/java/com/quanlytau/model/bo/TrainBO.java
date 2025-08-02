@@ -7,9 +7,6 @@ import java.util.List;
 public class TrainBO {
     private TrainDAO trainDAO = new TrainDAO();
 
-    public List<Train> searchTrains(String routeId, String departureDate, String departureTime, String departureStation, String arrivalStation) {
-        return trainDAO.searchTrains(routeId, departureDate, departureTime, departureStation, arrivalStation);
-    }
 
     public List<Train> getAllTrains() {
         return trainDAO.getAllTrains();
