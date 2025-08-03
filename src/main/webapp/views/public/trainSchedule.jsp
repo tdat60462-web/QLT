@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lịch tàu</title>
+    <title>Train Schedule</title>
     <style>
         body {
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
@@ -43,7 +43,7 @@
 </head>
 <body>
     <div class="box">
-        <h2>Lịch tàu</h2>
+        <h2>Train Schedule</h2>
         <%@ page import="java.sql.*, java.util.*" %>
         <%
             List<Map<String, String>> trains = new ArrayList<>();
@@ -71,18 +71,18 @@
                     trains.add(row);
                 }
                 rs.close(); st.close(); conn.close();
-            } catch (Exception e) { out.print("<tr><td colspan='8' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
+            } catch (Exception e) { out.print("<tr><td colspan='8' style='color:red;text-align:center;'>Database connection error!</td></tr>"); }
         %>
         <table>
             <tr>
-                <th>Mã tàu</th>
-                <th>Tên tàu</th>
-                <th>Loại tàu</th>
-                <th>Mã tuyến</th>
-                <th>Ga đi</th>
-                <th>Ga đến</th>
-                <th>Giờ xuất phát</th>
-                <th>Giờ đến</th>
+                <th>Train ID</th>
+                <th>Train Name</th>
+                <th>Type</th>
+                <th>Route ID</th>
+                <th>Departure Station</th>
+                <th>Arrival Station</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
             </tr>
             <% for (Map<String, String> t : trains) { %>
             <tr>
@@ -97,7 +97,7 @@
             </tr>
             <% } %>
         </table>
-        <p style="text-align:center;color:#888;">(Dữ liệu lấy từ nhiều bảng: train, route, station, schedule)</p>
+        <p style="text-align:center;color:#888;">(Data from: train, route, station, schedule)</p>
     </div>
 </body>
 </html>

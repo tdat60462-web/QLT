@@ -90,7 +90,7 @@
     <div class="header">
         <div class="logo">QLT Admin</div>
         <div class="nav">
-            <a href="/QLT/views/admin/dashboard.jsp" target="mainframe">Trang chủ</a>
+            <a href="/QLT/views/admin/indexAdmin.jsp" >Trang chủ</a>
             <a href="/QLT/views/admin/station-index.jsp" target="mainframe">Ga</a>
             <a href="/QLT/views/admin/train-index.jsp" target="mainframe">Tàu</a>
             <a href="/QLT/views/admin/route-index.jsp" target="mainframe">Tuyến</a>
@@ -99,7 +99,7 @@
             <a href="/QLT/views/admin/passenger-index.jsp" target="mainframe">Hành khách</a>
             <a href="/QLT/views/admin/user-index.jsp" target="mainframe">Người dùng</a>
             <a href="/QLT/views/admin/stats-index.jsp" target="mainframe">Thống kê</a>
-            <a href="/QLT/views/admin/logout.jsp" class="logout-btn">Đăng xuất</a>
+            <a href="/QLT/views/indexmenu.jsp" class="logout-btn">Đăng xuất</a>
         </div>
     </div>
 

@@ -90,9 +90,9 @@
         <div class="logo">QLT</div>
         <div class="nav">
             <a href="/QLT/views/indexmenu.jsp">Trang chủ</a>           
-            <a href="/QLT/views/public/lichTau.jsp" target="mainframe">Lịch tàu</a>
-            <a href="/QLT/views/public/tuyenDuong.jsp" target="mainframe">Tuyến đường</a>
-            <a href="/QLT/views/public/lienHe.jsp" target="mainframe">Liên hệ - góp ý</a>
+            <a href="/QLT/views/public/trainSchedule.jsp" target="mainframe">Lịch tàu</a>
+            <a href="/QLT/views/public/route.jsp" target="mainframe">Tuyến đường</a>
+            <a href="/QLT/views/public/contact.jsp" target="mainframe">Liên hệ - Phản hồi</a>
             <a href="/QLT/views/admin/login.jsp" target="mainframe" class="login-btn">Đăng nhập</a>
         </div>
     </div>

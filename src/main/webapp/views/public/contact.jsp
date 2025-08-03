@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Liên hệ</title>
+    <title>Contact</title>
     <style>
         body {
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
@@ -63,20 +63,20 @@
 </head>
 <body>
     <div class="box">
-        <h2>Liên hệ</h2>
+        <h2>Contact</h2>
         <form method="post" action="#">
-            <label for="name">Họ và tên:</label>
+            <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-            <label for="message">Nội dung:</label>
+            <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit">Gửi liên hệ</button>
+            <button type="submit">Send</button>
         </form>
         <div class="info">
             <p>Hotline: 0848525036 - 0912226011</p>
             <p>Email: truongquangdat1103@gmail.com - ductran149@gmail.com</p>
-            <p>Địa chỉ: 75 Đồng Kè</p>
+            <p>Address: 75 Dong Ke</p>
         </div>
     </div>
 </body>
