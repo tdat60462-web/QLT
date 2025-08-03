@@ -59,34 +59,10 @@
 </head>
 <body>
 
+<%@ page import="java.util.*" %>
 <%
-    List<Map<String, String>> routes = new ArrayList<>();
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
-        Statement st = conn.createStatement();
-        String sql = "SELECT r.route_id, t.name AS train_name, t.type, s1.name AS departure_station, s2.name AS arrival_station, r.duration " +
-                     "FROM route r " +
-                     "JOIN train t ON r.train_id = t.train_id " +
-                     "JOIN station s1 ON r.departure_station_id = s1.station_id " +
-                     "JOIN station s2 ON r.arrival_station_id = s2.station_id";
-        ResultSet rs = st.executeQuery(sql);
-        while (rs.next()) {
-            Map<String, String> row = new HashMap<>();
-            row.put("route_id", rs.getString("route_id"));
-            row.put("train_name", rs.getString("train_name"));
-            row.put("type", rs.getString("type"));
-            row.put("departure_station", rs.getString("departure_station"));
-            row.put("arrival_station", rs.getString("arrival_station"));
-            row.put("duration", rs.getString("duration"));
-            routes.add(row);
-        }
-        rs.close(); st.close(); conn.close();
-    } catch (Exception e) {
-%>
-    <div style="color: red; text-align: center;">Lỗi kết nối CSDL: <%= e.getMessage() %></div>
-<%
-    }
+    List<Map<String, String>> routes = (List<Map<String, String>>) request.getAttribute("routes");
+    if (routes == null) routes = new ArrayList<>();
 %>
 
 <div class="container">

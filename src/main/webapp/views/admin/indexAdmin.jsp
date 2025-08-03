@@ -93,7 +93,7 @@
             <a href="/QLT/views/admin/indexAdmin.jsp" >Trang chủ</a>
             <a href="/QLT/views/admin/station-index.jsp" target="mainAframe">Ga</a>
             <a href="/QLT/views/admin/train-index.jsp" target="mainAframe">Tàu</a>
-            <a href="/QLT/views/admin/route-index.jsp" target="mainAframe">Tuyến</a>
+            <a href="/QLT/views/admin/route-index.jsp" target="mainAframe">Tuyến đường</a>
             <a href="/QLT/views/admin/schedule-index.jsp" target="mainAframe">Lịch trình</a>
             <a href="/QLT/views/admin/ticket-index.jsp" target="mainAframe">Vé</a>
             <a href="/QLT/views/admin/passenger-index.jsp" target="mainAframe">Hành khách</a>

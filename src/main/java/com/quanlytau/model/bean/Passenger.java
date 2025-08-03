@@ -1,6 +1,13 @@
 package com.quanlytau.model.bean;
 
 public class Passenger {
+    public Passenger() {}
+    public Passenger(int passengerId, String name, String email, String phone) {
+        this.passengerId = passengerId;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
     private int passengerId;
     private String name;
     private String email;

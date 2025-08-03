@@ -1,5 +1,6 @@
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Passenger" %>
+<%@ page import="java.util.*, com.quanlytau.model.bean.Passenger" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -24,23 +25,8 @@
     <h2>Danh sách hành khách</h2>
     <a class="add-btn" href="/QLT/views/admin/passenger-register.jsp">Thêm hành khách mới</a>
     <%
-        List<Passenger> passengers = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
-            Statement st = conn.createStatement();
-            String sql = "SELECT passenger_id, name, phone, email FROM passenger";
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                Passenger p = new Passenger();
-                p.setPassengerId(rs.getInt("passenger_id"));
-                p.setName(rs.getString("name"));
-                p.setPhone(rs.getString("phone"));
-                p.setEmail(rs.getString("email"));
-                passengers.add(p);
-            }
-            rs.close(); st.close(); conn.close();
-        } catch (Exception e) { out.print("<tr><td colspan='5' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
+        List<Passenger> passengers = (List<Passenger>) request.getAttribute("passengers");
+        if (passengers == null) passengers = new ArrayList<>();
     %>
     <table>
         <tr>

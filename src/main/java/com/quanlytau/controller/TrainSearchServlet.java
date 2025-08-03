@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
-@WebServlet("/search")
+@WebServlet("/train-search")
 public class TrainSearchServlet extends HttpServlet {
     private TrainBO trainBO = new TrainBO();
 

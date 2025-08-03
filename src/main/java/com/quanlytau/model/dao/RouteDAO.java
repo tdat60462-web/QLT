@@ -6,6 +6,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RouteDAO {
+    public List<java.util.Map<String, String>> getPublicRoutes() {
+        List<java.util.Map<String, String>> routes = new ArrayList<>();
+        String sql = "SELECT r.route_id, t.name AS train_name, t.type, s1.name AS departure_station, s2.name AS arrival_station, r.duration " +
+            "FROM route r " +
+            "JOIN train t ON r.train_id = t.train_id " +
+            "JOIN station s1 ON r.departure_station_id = s1.station_id " +
+            "JOIN station s2 ON r.arrival_station_id = s2.station_id";
+        try (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                java.util.Map<String, String> row = new java.util.HashMap<>();
+                row.put("route_id", rs.getString("route_id"));
+                row.put("train_name", rs.getString("train_name"));
+                row.put("type", rs.getString("type"));
+                row.put("departure_station", rs.getString("departure_station"));
+                row.put("arrival_station", rs.getString("arrival_station"));
+                row.put("duration", rs.getString("duration"));
+                routes.add(row);
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+        return routes;
+    }
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
     }
