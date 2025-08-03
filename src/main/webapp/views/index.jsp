@@ -40,9 +40,6 @@
             background-color: #444;
             color: #fff;
         }
-        .nav a.active {
-            /* Không có màu nền mặc định */
-        }
         .nav .login-btn {
             background: #1e90ff;
             color: #fff;
