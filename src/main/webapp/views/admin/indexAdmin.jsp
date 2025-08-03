@@ -41,7 +41,7 @@
         }
 
         .nav a:hover {
-            background-color: #444; /* nền xám đậm khi hover */
+            background-color: #444;
             color: #fff;
         }
 
@@ -49,7 +49,7 @@
             /* Không có màu nền mặc định */
         }
 
-        .nav .login-btn {
+        .nav .logout-btn {
             background: #1e90ff;
             color: #fff;
             padding: 8px 16px;
@@ -59,9 +59,10 @@
             font-weight: bold;
             cursor: pointer;
             transition: background 0.2s;
+            text-decoration: none;
         }
 
-        .nav .login-btn:hover {
+        .nav .logout-btn:hover {
             background: #1565c0;
         }
 
@@ -87,18 +88,23 @@
 </head>
 <body>
     <div class="header">
-        <div class="logo">QLT</div>
+        <div class="logo">QLT Admin</div>
         <div class="nav">
-            <a href="/QLT/views/indexmenu.jsp">Trang chủ</a>           
-            <a href="/QLT/views/public/lichTau.jsp" target="mainframe">Lịch tàu</a>
-            <a href="/QLT/views/public/tuyenDuong.jsp" target="mainframe">Tuyến đường</a>
-            <a href="/QLT/views/public/lienHe.jsp" target="mainframe">Liên hệ - góp ý</a>
-            <a href="/QLT/views/admin/login.jsp" target="mainframe" class="login-btn">Đăng nhập</a>
+            <a href="/QLT/views/admin/dashboard.jsp" target="mainframe">Trang chủ</a>
+            <a href="/QLT/views/admin/station-index.jsp" target="mainframe">Ga</a>
+            <a href="/QLT/views/admin/train-index.jsp" target="mainframe">Tàu</a>
+            <a href="/QLT/views/admin/route-index.jsp" target="mainframe">Tuyến</a>
+            <a href="/QLT/views/admin/schedule-index.jsp" target="mainframe">Lịch trình</a>
+            <a href="/QLT/views/admin/ticket-index.jsp" target="mainframe">Vé</a>
+            <a href="/QLT/views/admin/passenger-index.jsp" target="mainframe">Hành khách</a>
+            <a href="/QLT/views/admin/user-index.jsp" target="mainframe">Người dùng</a>
+            <a href="/QLT/views/admin/stats-index.jsp" target="mainframe">Thống kê</a>
+            <a href="/QLT/views/admin/logout.jsp" class="logout-btn">Đăng xuất</a>
         </div>
     </div>
 
     <div class="main">
-        <iframe name="mainframe" src="/QLT/views/mainframe.jsp"></iframe>
+        <iframe name="mainframe" src="/QLT/views/admin/dashboard.jsp"></iframe>
     </div>
 </body>
 </html>
