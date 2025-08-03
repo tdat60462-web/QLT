@@ -97,7 +97,6 @@
             <a href="/QLT/views/admin/schedule-index.jsp" target="mainframe">Lịch trình</a>
             <a href="/QLT/views/admin/ticket-index.jsp" target="mainframe">Vé</a>
             <a href="/QLT/views/admin/passenger-index.jsp" target="mainframe">Hành khách</a>
-            <a href="/QLT/views/admin/user-index.jsp" target="mainframe">Người dùng</a>
             <a href="/QLT/views/admin/stats-index.jsp" target="mainframe">Thống kê</a>
             <a href="/QLT/views/indexmenu.jsp" class="logout-btn">Đăng xuất</a>
         </div>
