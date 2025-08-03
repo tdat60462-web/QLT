@@ -74,8 +74,8 @@
             <button type="submit">Gửi liên hệ</button>
         </form>
         <div class="info">
-            <p>Hotline: 0848525036</p>
-            <p>Email: truongquangdat1103@gmail.com</p>
+            <p>Hotline: 0848525036 - 0912226011</p>
+            <p>Email: truongquangdat1103@gmail.com - ductran149@gmail.com</p>
             <p>Địa chỉ: 75 Đồng Kè</p>
         </div>
     </div>

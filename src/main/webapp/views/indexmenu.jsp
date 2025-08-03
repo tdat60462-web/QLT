@@ -12,6 +12,7 @@
             color: #222;
             margin: 0;
         }
+
         .header {
             background: #111;
             color: #fff;
@@ -19,15 +20,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-radius: 12px 12px 0 0;
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
+
         .logo {
             font-size: 2rem;
             font-weight: bold;
             margin-left: 32px;
             letter-spacing: 2px;
         }
+
         .nav a {
             color: #fff;
             text-decoration: none;
@@ -35,9 +37,12 @@
             font-size: 1.1rem;
             transition: color 0.2s;
         }
-        .nav a.active, .nav a:hover {
+
+        .nav a.active,
+        .nav a:hover {
             color: #1e90ff;
         }
+
         .nav .login-btn {
             background: #1e90ff;
             color: #fff;
@@ -49,27 +54,28 @@
             cursor: pointer;
             transition: background 0.2s;
         }
+
         .nav .login-btn:hover {
             background: #1565c0;
         }
+
         .main {
             background: #fff;
             min-height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            padding: 40px 60px;
-            border-radius: 0 0 16px 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+            align-items: stretch;
+            padding: 0;
         }
+
         iframe {
             width: 100%;
-            height: 500px;
-            border: 1.5px solid #e0e0e0;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-            background: #fff;
+            height: 100vh;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
         }
     </style>
 </head>
@@ -81,7 +87,7 @@
             <a href="/QLT/views/public/lichTau.jsp" target="mainframe">Lịch tàu</a>
             <a href="/QLT/views/public/tuyenDuong.jsp" target="mainframe">Tuyến đường</a>
             <a href="/QLT/views/public/lienHe.jsp" target="mainframe">Liên hệ - góp ý</a>
-            <a href="/QLT/views/admin/login.jsp" target="mainframe" style="background:#1e90ff; color:#fff; padding:8px 16px; border-radius:4px; margin-left:16px;">Đăng nhập</a>
+            <a href="/QLT/views/admin/login.jsp" target="mainframe" class="login-btn">Đăng nhập</a>
         </div>
     </div>
 
