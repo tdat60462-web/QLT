@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/schedule")
+@WebServlet("/admin/schedule")
 public class ScheduleServlet extends HttpServlet {
     private ScheduleBO scheduleBO = new ScheduleBO();
 
@@ -21,7 +21,7 @@ public class ScheduleServlet extends HttpServlet {
         if (action.equals("list")) {
             List<Schedule> schedules = scheduleBO.getAllSchedules();
             request.setAttribute("schedules", schedules);
-            request.getRequestDispatcher("/views/schedule/list.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/admin/schedule-index.jsp").forward(request, response);
         } else if (action.equals("detail")) {
             int scheduleId = Integer.parseInt(request.getParameter("id"));
             Schedule schedule = scheduleBO.getScheduleById(scheduleId);

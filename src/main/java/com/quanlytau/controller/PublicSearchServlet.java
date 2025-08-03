@@ -9,7 +9,7 @@ import com.quanlytau.model.dao.TrainDAO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/search")
+@WebServlet("/public/search")
 public class PublicSearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

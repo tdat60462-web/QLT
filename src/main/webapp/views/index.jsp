@@ -78,8 +78,8 @@
         <div class="logo">QLT</div>
         <div class="nav">
             <a href="/QLT/views/index.jsp">Trang chủ</a>           
-            <a href="/QLT/views/public/trainSchedule.jsp" target="mainframe">Lịch trình</a>
-            <a href="/QLT/views/public/route.jsp" target="mainframe">Tuyến đường</a>
+            <a href="/QLT/public/trainSchedule" target="mainframe">Lịch trình</a>
+            <a href="/QLT/public/route" target="mainframe">Tuyến đường</a>
             <a href="/QLT/views/public/contact.jsp" target="mainframe">Liên hệ - Phản hồi</a>
             <a href="/QLT/views/admin/login.jsp" target="mainframe" class="login-btn">Đăng nhập</a>
         </div>

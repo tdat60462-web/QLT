@@ -91,13 +91,13 @@
         <div class="logo">QLT Admin</div>
         <div class="nav">
             <a href="/QLT/views/admin/indexAdmin.jsp" >Trang chủ</a>
-            <a href="/QLT/views/admin/station-index.jsp" target="mainAframe">Ga</a>
-            <a href="/QLT/views/admin/train-index.jsp" target="mainAframe">Tàu</a>
-            <a href="/QLT/views/admin/route-index.jsp" target="mainAframe">Tuyến đường</a>
-            <a href="/QLT/views/admin/schedule-index.jsp" target="mainAframe">Lịch trình</a>
-            <a href="/QLT/views/admin/ticket-index.jsp" target="mainAframe">Vé</a>
-            <a href="/QLT/views/admin/passenger-index.jsp" target="mainAframe">Hành khách</a>
-            <a href="/QLT/views/admin/stats-index.jsp" target="mainAframe">Thống kê</a>
+            <a href="/QLT/admin/station" target="mainAframe">Ga</a>
+            <a href="/QLT/admin/train-general" target="mainAframe">Tàu</a>
+            <a href="/QLT/admin/route" target="mainAframe">Tuyến đường</a>
+            <a href="/QLT/admin/schedule" target="mainAframe">Lịch trình</a>
+            <a href="/QLT/admin/ticket" target="mainAframe">Vé</a>
+            <a href="/QLT/admin/passenger" target="mainAframe">Hành khách</a>
+            <a href="/QLT/admin/stats" target="mainAframe">Thống kê</a>
             <a href="/QLT/views/index.jsp" class="logout-btn">Đăng xuất</a>
         </div>
     </div>

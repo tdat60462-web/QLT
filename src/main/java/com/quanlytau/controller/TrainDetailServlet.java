@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/detail")
+@WebServlet("/public/detail")
 public class TrainDetailServlet extends HttpServlet {
     private TrainBO trainBO = new TrainBO();
 
