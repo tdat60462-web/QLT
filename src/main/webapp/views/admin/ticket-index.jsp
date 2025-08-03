@@ -3,7 +3,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Quản lý tàu</title>
+    <title>Quản lý vé</title>
     <style>
         body {
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
@@ -17,7 +17,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.10);
             padding: 32px;
             margin: 32px auto;
-            max-width: 900px;
+            max-width: 1100px;
         }
         h2 {
             color: #1e90ff;
@@ -73,42 +73,58 @@
 <body>
 <%@ include file="logout-link.jsp" %>
 <div class="container">
-    <h2>Danh sách tàu</h2>
-    <a class="add-btn" href="/QLT/views/admin/train-register.jsp">Thêm tàu mới</a>
-    <%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Train" %>
+    <h2>Danh sách vé</h2>
+    <a class="add-btn" href="/QLT/views/admin/ticket-register.jsp">Thêm vé mới</a>
+    <%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Ticket" %>
     <%
-        List<Train> trains = new ArrayList<>();
+        List<Ticket> tickets = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
             Statement st = conn.createStatement();
-            String sql = "SELECT train_id, name, type FROM train";
+            String sql = "SELECT tk.ticket_id, tk.schedule_id, tk.passenger_id, tk.seat_number, tk.price, tk.status, sch.departure_time, sch.arrival_time, p.name AS passenger_name FROM ticket tk JOIN schedule sch ON tk.schedule_id = sch.schedule_id JOIN passenger p ON tk.passenger_id = p.passenger_id";
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Train train = new Train();
-                train.setTrainId(rs.getInt("train_id"));
-                train.setName(rs.getString("name"));
-                train.setType(rs.getString("type"));
-                trains.add(train);
+                Ticket ticket = new Ticket();
+                ticket.setTicketId(rs.getInt("ticket_id"));
+                ticket.setScheduleId(rs.getInt("schedule_id"));
+                ticket.setPassengerId(rs.getInt("passenger_id"));
+                ticket.setSeatNumber(rs.getString("seat_number"));
+                ticket.setPrice(rs.getDouble("price"));
+                ticket.setStatus(rs.getString("status"));
+                ticket.setDepartureTime(rs.getString("departure_time"));
+                ticket.setArrivalTime(rs.getString("arrival_time"));
+                ticket.setPassengerName(rs.getString("passenger_name"));
+                tickets.add(ticket);
             }
             rs.close(); st.close(); conn.close();
-        } catch (Exception e) { out.print("<tr><td colspan='4' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
+        } catch (Exception e) { out.print("<tr><td colspan='10' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
     %>
     <table>
         <tr>
-            <th>Mã tàu</th>
-            <th>Tên tàu</th>
-            <th>Loại tàu</th>
+            <th>Mã vé</th>
+            <th>Mã lịch trình</th>
+            <th>Hành khách</th>
+            <th>Số ghế</th>
+            <th>Giá vé</th>
+            <th>Trạng thái</th>
+            <th>Giờ xuất phát</th>
+            <th>Giờ đến</th>
             <th>Hành động</th>
         </tr>
-        <% for (Train t : trains) { %>
+        <% for (Ticket tk : tickets) { %>
         <tr>
-            <td><%= t.getTrainId() %></td>
-            <td><%= t.getName() %></td>
-            <td><%= t.getType() %></td>
+            <td><%= tk.getTicketId() %></td>
+            <td><%= tk.getScheduleId() %></td>
+            <td><%= tk.getPassengerName() %></td>
+            <td><%= tk.getSeatNumber() %></td>
+            <td><%= tk.getPrice() %></td>
+            <td><%= tk.getStatus() %></td>
+            <td><%= tk.getDepartureTime() %></td>
+            <td><%= tk.getArrivalTime() %></td>
             <td>
-                <a class="action-btn" href="/admin/train?action=edit&id=<%= t.getTrainId() %>">Sửa</a>
-                <a class="action-btn" href="/admin/train?action=delete&id=<%= t.getTrainId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
+                <a class="action-btn" href="/admin/ticket?action=edit&id=<%= tk.getTicketId() %>">Sửa</a>
+                <a class="action-btn" href="/admin/ticket?action=delete&id=<%= tk.getTicketId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
             </td>
         </tr>
         <% } %>

@@ -75,9 +75,9 @@
 <div class="container">
     <h2>Danh sách lịch trình</h2>
     <a class="add-btn" href="/QLT/views/admin/schedule-register.jsp">Thêm lịch trình mới</a>
-    <%@ page import="java.sql.*, java.util.*" %>
+    <%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Schedule" %>
     <%
-        List<Map<String, String>> schedules = new ArrayList<>();
+        List<Schedule> schedules = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
@@ -85,16 +85,16 @@
             String sql = "SELECT sch.schedule_id, r.route_id, t.name AS train_name, s1.name AS departure_station, s2.name AS arrival_station, sch.departure_time, sch.arrival_time, sch.available_seats FROM schedule sch JOIN route r ON sch.route_id = r.route_id JOIN train t ON r.train_id = t.train_id JOIN station s1 ON r.departure_station_id = s1.station_id JOIN station s2 ON r.arrival_station_id = s2.station_id";
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Map<String, String> row = new HashMap<>();
-                row.put("schedule_id", rs.getString("schedule_id"));
-                row.put("route_id", rs.getString("route_id"));
-                row.put("train_name", rs.getString("train_name"));
-                row.put("departure_station", rs.getString("departure_station"));
-                row.put("arrival_station", rs.getString("arrival_station"));
-                row.put("departure_time", rs.getString("departure_time"));
-                row.put("arrival_time", rs.getString("arrival_time"));
-                row.put("available_seats", rs.getString("available_seats"));
-                schedules.add(row);
+                Schedule sch = new Schedule();
+                sch.setScheduleId(rs.getInt("schedule_id"));
+                sch.setRouteId(rs.getInt("route_id"));
+                sch.setTrainName(rs.getString("train_name"));
+                sch.setDepartureStation(rs.getString("departure_station"));
+                sch.setArrivalStation(rs.getString("arrival_station"));
+                sch.setDepartureTime(rs.getString("departure_time"));
+                sch.setArrivalTime(rs.getString("arrival_time"));
+                sch.setAvailableSeats(rs.getInt("available_seats"));
+                schedules.add(sch);
             }
             rs.close(); st.close(); conn.close();
         } catch (Exception e) { out.print("<tr><td colspan='9' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
@@ -111,19 +111,19 @@
             <th>Số ghế còn lại</th>
             <th>Hành động</th>
         </tr>
-        <% for (Map<String, String> sch : schedules) { %>
+        <% for (Schedule sch : schedules) { %>
         <tr>
-            <td><%= sch.get("schedule_id") %></td>
-            <td><%= sch.get("route_id") %></td>
-            <td><%= sch.get("train_name") %></td>
-            <td><%= sch.get("departure_station") %></td>
-            <td><%= sch.get("arrival_station") %></td>
-            <td><%= sch.get("departure_time") %></td>
-            <td><%= sch.get("arrival_time") %></td>
-            <td><%= sch.get("available_seats") %></td>
+            <td><%= sch.getScheduleId() %></td>
+            <td><%= sch.getRouteId() %></td>
+            <td><%= sch.getTrainName() %></td>
+            <td><%= sch.getDepartureStation() %></td>
+            <td><%= sch.getArrivalStation() %></td>
+            <td><%= sch.getDepartureTime() %></td>
+            <td><%= sch.getArrivalTime() %></td>
+            <td><%= sch.getAvailableSeats() %></td>
             <td>
-                <a class="action-btn" href="/admin/schedule?action=edit&id=<%= sch.get("schedule_id") %>">Sửa</a>
-                <a class="action-btn" href="/admin/schedule?action=delete&id=<%= sch.get("schedule_id") %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
+                <a class="action-btn" href="/admin/schedule?action=edit&id=<%= sch.getScheduleId() %>">Sửa</a>
+                <a class="action-btn" href="/admin/schedule?action=delete&id=<%= sch.getScheduleId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
             </td>
         </tr>
         <% } %>

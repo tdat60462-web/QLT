@@ -1,1 +1,1 @@
-<a href="/admin/logout" style="background:#1e90ff;color:#fff;padding:8px 16px;border-radius:4px;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Đăng xuất</a>
+<!-- Đã xóa box đăng xuất màu xanh theo yêu cầu -->

@@ -1,17 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ page import="com.quanlytau.model.bean.Schedule" %>
-<%@ page import="com.quanlytau.model.bean.Route" %>
-<%@ page import="java.util.List, java.util.Map" %>
+<%@ page import="com.quanlytau.model.bean.Ticket" %>
+<%@ page import="java.util.List, com.quanlytau.model.bean.Ticket, com.quanlytau.model.bean.Schedule, com.quanlytau.model.bean.Passenger" %>
 <%
-    Schedule schedule = (Schedule)request.getAttribute("schedule");
-    boolean isEdit = (schedule != null);
-    List<Route> routes = (List<Route>)request.getAttribute("routes");
+    Ticket ticket = (Ticket)request.getAttribute("ticket");
+    boolean isEdit = (ticket != null);
+    List<Schedule> schedules = (List<Schedule>)request.getAttribute("schedules");
+    List<Passenger> passengers = (List<Passenger>)request.getAttribute("passengers");
 %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title><%= isEdit ? "Sửa lịch trình" : "Thêm lịch trình" %></title>
+    <title><%= isEdit ? "Sửa vé" : "Thêm vé" %></title>
     <style>
         body {
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
@@ -45,7 +45,7 @@
             font-weight: 500;
             margin-bottom: 6px;
         }
-        input[type="text"], input[type="datetime-local"], select {
+        input[type="text"], input[type="number"], select {
             padding: 10px 14px;
             border: 1px solid #e0e0e0;
             border-radius: 6px;
@@ -86,7 +86,7 @@
 <body>
 <%@ include file="logout-link.jsp" %>
 <div class="container">
-    <h2><%= isEdit ? "Sửa lịch trình" : "Thêm lịch trình mới" %></h2>
+    <h2><%= isEdit ? "Sửa vé" : "Thêm vé mới" %></h2>
     <% String message = (String) request.getAttribute("message");
        String error = (String) request.getAttribute("error");
        if (message != null) { %>
@@ -95,36 +95,48 @@
        if (error != null) { %>
         <div class="msg error"><%= error %></div>
     <% } %>
-    <form method="post" action="/admin/schedule">
+    <form method="post" action="/admin/ticket">
         <input type="hidden" name="action" value="<%= isEdit ? "edit" : "add" %>" />
         <div class="form-row">
-            <label for="scheduleId">Mã lịch trình:</label>
-            <input type="text" id="scheduleId" name="scheduleId" value="<%= isEdit ? schedule.getScheduleId() : "" %>" <%= isEdit ? "readonly" : "" %> required />
+            <label for="ticketId">Mã vé:</label>
+            <input type="text" id="ticketId" name="ticketId" value="<%= isEdit ? ticket.getTicketId() : "" %>" <%= isEdit ? "readonly" : "" %> required />
         </div>
         <div class="form-row">
-            <label for="routeId">Tuyến:</label>
-            <select id="routeId" name="routeId" required>
-                <option value="">-- Chọn tuyến --</option>
-                <% if (routes != null) for (Route r : routes) { %>
-                    <option value="<%= r.getRouteId() %>" <%= isEdit && schedule.getRouteId() == r.getRouteId() ? "selected" : "" %>><%= r.getRouteId() %> - <%= r.getTrainName() %> (<%= r.getDepartureStation() %> → <%= r.getArrivalStation() %>)</option>
+            <label for="scheduleId">Lịch trình:</label>
+            <select id="scheduleId" name="scheduleId" required>
+                <option value="">-- Chọn lịch trình --</option>
+                <% if (schedules != null) for (Schedule sch : schedules) { %>
+                    <option value="<%= sch.getScheduleId() %>" <%= isEdit && ticket.getScheduleId() == sch.getScheduleId() ? "selected" : "" %>><%= sch.getScheduleId() %> - <%= sch.getDepartureTime() %> → <%= sch.getArrivalTime() %></option>
                 <% } %>
             </select>
         </div>
         <div class="form-row">
-            <label for="departureTime">Giờ xuất phát:</label>
-            <input type="datetime-local" id="departureTime" name="departureTime" value="<%= isEdit ? schedule.getDepartureTime() : "" %>" required />
+            <label for="passengerId">Hành khách:</label>
+            <select id="passengerId" name="passengerId" required>
+                <option value="">-- Chọn hành khách --</option>
+                <% if (passengers != null) for (Passenger p : passengers) { %>
+                    <option value="<%= p.getPassengerId() %>" <%= isEdit && ticket.getPassengerId() == p.getPassengerId() ? "selected" : "" %>><%= p.getPassengerId() %> - <%= p.getName() %></option>
+                <% } %>
+            </select>
         </div>
         <div class="form-row">
-            <label for="arrivalTime">Giờ đến:</label>
-            <input type="datetime-local" id="arrivalTime" name="arrivalTime" value="<%= isEdit ? schedule.getArrivalTime() : "" %>" required />
+            <label for="seatNumber">Số ghế:</label>
+            <input type="text" id="seatNumber" name="seatNumber" value="<%= isEdit ? ticket.getSeatNumber() : "" %>" required />
         </div>
         <div class="form-row">
-            <label for="availableSeats">Số ghế còn lại:</label>
-            <input type="text" id="availableSeats" name="availableSeats" value="<%= isEdit ? schedule.getAvailableSeats() : "" %>" required />
+            <label for="price">Giá vé:</label>
+            <input type="number" id="price" name="price" value="<%= isEdit ? ticket.getPrice() : "" %>" required />
+        </div>
+        <div class="form-row">
+            <label for="status">Trạng thái:</label>
+            <select id="status" name="status" required>
+                <option value="booked" <%= isEdit && "booked".equals(ticket.getStatus()) ? "selected" : "" %>>Đã đặt</option>
+                <option value="cancelled" <%= isEdit && "cancelled".equals(ticket.getStatus()) ? "selected" : "" %>>Đã hủy</option>
+            </select>
         </div>
         <button type="submit"><%= isEdit ? "Cập nhật" : "Thêm mới" %></button>
     </form>
-    <a class="back-link" href="/QLT/views/admin/schedule-index.jsp">Quay lại danh sách</a>
+    <a class="back-link" href="/QLT/views/admin/ticket-index.jsp">Quay lại danh sách</a>
 </div>
 </body>
 </html>

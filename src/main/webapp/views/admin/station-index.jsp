@@ -76,9 +76,9 @@
 <div class="container">
     <h2>Danh sách ga tàu</h2>
     <a class="add-btn" href="/QLT/views/admin/station-register.jsp">Thêm ga tàu mới</a>
-    <%@ page import="java.sql.*, java.util.*" %>
+    <%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Station" %>
     <%
-        List<Map<String, String>> stations = new ArrayList<>();
+        List<Station> stations = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
@@ -86,11 +86,11 @@
             String sql = "SELECT station_id, name, address FROM station";
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Map<String, String> row = new HashMap<>();
-                row.put("station_id", rs.getString("station_id"));
-                row.put("name", rs.getString("name"));
-                row.put("address", rs.getString("address"));
-                stations.add(row);
+                Station station = new Station();
+                station.setStationId(rs.getInt("station_id"));
+                station.setName(rs.getString("name"));
+                station.setAddress(rs.getString("address"));
+                stations.add(station);
             }
             rs.close(); st.close(); conn.close();
         } catch (Exception e) { out.print("<tr><td colspan='4' style='color:red;text-align:center;'>Database connection error!</td></tr>"); }
@@ -102,14 +102,14 @@
             <th>Địa chỉ</th>
             <th>Hành động</th>
         </tr>
-        <% for (Map<String, String> s : stations) { %>
+        <% for (Station s : stations) { %>
         <tr>
-            <td><%= s.get("station_id") %></td>
-            <td><%= s.get("name") %></td>
-            <td><%= s.get("address") %></td>
+            <td><%= s.getStationId() %></td>
+            <td><%= s.getName() %></td>
+            <td><%= s.getAddress() %></td>
             <td>
-                <a class="action-btn" href="/admin/station?action=edit&id=<%= s.get("station_id") %>">Sửa</a>
-                <a class="action-btn" href="/admin/station?action=delete&id=<%= s.get("station_id") %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
+                <a class="action-btn" href="/admin/station?action=edit&id=<%= s.getStationId() %>">Sửa</a>
+                <a class="action-btn" href="/admin/station?action=delete&id=<%= s.getStationId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
             </td>
         </tr>
         <% } %>
