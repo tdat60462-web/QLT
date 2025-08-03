@@ -76,24 +76,10 @@
 <div class="container">
     <h2>Danh sách ga tàu</h2>
     <a class="add-btn" href="/QLT/views/admin/station-register.jsp">Thêm ga tàu mới</a>
-    <%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Station" %>
+    <%@ page import="java.util.*, com.quanlytau.model.bean.Station" %>
     <%
-        List<Station> stations = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
-            Statement st = conn.createStatement();
-            String sql = "SELECT station_id, name, address FROM station";
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                Station station = new Station();
-                station.setStationId(rs.getInt("station_id"));
-                station.setName(rs.getString("name"));
-                station.setAddress(rs.getString("address"));
-                stations.add(station);
-            }
-            rs.close(); st.close(); conn.close();
-        } catch (Exception e) { out.print("<tr><td colspan='4' style='color:red;text-align:center;'>Database connection error!</td></tr>"); }
+        List<Station> stations = (List<Station>) request.getAttribute("stations");
+        if (stations == null) stations = new ArrayList<>();
     %>
     <table>
         <tr>

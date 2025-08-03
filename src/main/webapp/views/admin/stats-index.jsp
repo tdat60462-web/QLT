@@ -21,30 +21,12 @@
     <h2>Thống kê hệ thống</h2>
     <div class="stat-box">
         <%
-            int totalTickets = 0, totalPassengers = 0, totalTrains = 0, totalSchedules = 0;
-            double totalRevenue = 0;
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM ticket");
-                if (rs.next()) totalTickets = rs.getInt(1);
-                rs.close();
-                rs = st.executeQuery("SELECT COUNT(*) FROM passenger");
-                if (rs.next()) totalPassengers = rs.getInt(1);
-                rs.close();
-                rs = st.executeQuery("SELECT COUNT(*) FROM train");
-                if (rs.next()) totalTrains = rs.getInt(1);
-                rs.close();
-                rs = st.executeQuery("SELECT COUNT(*) FROM schedule");
-                if (rs.next()) totalSchedules = rs.getInt(1);
-                rs.close();
-                rs = st.executeQuery("SELECT SUM(price) FROM ticket WHERE status='booked'");
-                if (rs.next()) totalRevenue = rs.getDouble(1);
-                rs.close(); st.close(); conn.close();
-            } catch (Exception e) { %>
-                <div style="color:red;text-align:center;">Lỗi kết nối CSDL!</div>
-        <% } %>
+            int totalTickets = request.getAttribute("totalTickets") != null ? (Integer) request.getAttribute("totalTickets") : 0;
+            int totalPassengers = request.getAttribute("totalPassengers") != null ? (Integer) request.getAttribute("totalPassengers") : 0;
+            int totalTrains = request.getAttribute("totalTrains") != null ? (Integer) request.getAttribute("totalTrains") : 0;
+            int totalSchedules = request.getAttribute("totalSchedules") != null ? (Integer) request.getAttribute("totalSchedules") : 0;
+            double totalRevenue = request.getAttribute("totalRevenue") != null ? (Double) request.getAttribute("totalRevenue") : 0;
+        %>
         <div class="stat-item">
             <div class="stat-label">Tổng số vé đã bán</div>
             <div class="stat-value"><%= totalTickets %></div>

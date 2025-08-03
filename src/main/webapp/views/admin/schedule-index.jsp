@@ -75,29 +75,10 @@
 <div class="container">
     <h2>Danh sách lịch trình</h2>
     <a class="add-btn" href="/QLT/views/admin/schedule-register.jsp">Thêm lịch trình mới</a>
-    <%@ page import="java.sql.*, java.util.*, com.quanlytau.model.bean.Schedule" %>
+    <%@ page import="java.util.*, com.quanlytau.model.bean.Schedule" %>
     <%
-        List<Schedule> schedules = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
-            Statement st = conn.createStatement();
-            String sql = "SELECT sch.schedule_id, r.route_id, t.name AS train_name, s1.name AS departure_station, s2.name AS arrival_station, sch.departure_time, sch.arrival_time, sch.available_seats FROM schedule sch JOIN route r ON sch.route_id = r.route_id JOIN train t ON r.train_id = t.train_id JOIN station s1 ON r.departure_station_id = s1.station_id JOIN station s2 ON r.arrival_station_id = s2.station_id";
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                Schedule sch = new Schedule();
-                sch.setScheduleId(rs.getInt("schedule_id"));
-                sch.setRouteId(rs.getInt("route_id"));
-                sch.setTrainName(rs.getString("train_name"));
-                sch.setDepartureStation(rs.getString("departure_station"));
-                sch.setArrivalStation(rs.getString("arrival_station"));
-                sch.setDepartureTime(rs.getString("departure_time"));
-                sch.setArrivalTime(rs.getString("arrival_time"));
-                sch.setAvailableSeats(rs.getInt("available_seats"));
-                schedules.add(sch);
-            }
-            rs.close(); st.close(); conn.close();
-        } catch (Exception e) { out.print("<tr><td colspan='9' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
+        List<Schedule> schedules = (List<Schedule>) request.getAttribute("schedules");
+        if (schedules == null) schedules = new ArrayList<>();
     %>
     <table>
         <tr>

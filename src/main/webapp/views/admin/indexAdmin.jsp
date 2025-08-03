@@ -91,19 +91,19 @@
         <div class="logo">QLT Admin</div>
         <div class="nav">
             <a href="/QLT/views/admin/indexAdmin.jsp" >Trang chủ</a>
-            <a href="/QLT/views/admin/station-index.jsp" target="mainframe">Ga</a>
-            <a href="/QLT/views/admin/train-index.jsp" target="mainframe">Tàu</a>
-            <a href="/QLT/views/admin/route-index.jsp" target="mainframe">Tuyến</a>
-            <a href="/QLT/views/admin/schedule-index.jsp" target="mainframe">Lịch trình</a>
-            <a href="/QLT/views/admin/ticket-index.jsp" target="mainframe">Vé</a>
-            <a href="/QLT/views/admin/passenger-index.jsp" target="mainframe">Hành khách</a>
-            <a href="/QLT/views/admin/stats-index.jsp" target="mainframe">Thống kê</a>
+            <a href="/QLT/views/admin/station-index.jsp" target="mainAframe">Ga</a>
+            <a href="/QLT/views/admin/train-index.jsp" target="mainAframe">Tàu</a>
+            <a href="/QLT/views/admin/route-index.jsp" target="mainAframe">Tuyến</a>
+            <a href="/QLT/views/admin/schedule-index.jsp" target="mainAframe">Lịch trình</a>
+            <a href="/QLT/views/admin/ticket-index.jsp" target="mainAframe">Vé</a>
+            <a href="/QLT/views/admin/passenger-index.jsp" target="mainAframe">Hành khách</a>
+            <a href="/QLT/views/admin/stats-index.jsp" target="mainAframe">Thống kê</a>
             <a href="/QLT/views/index.jsp" class="logout-btn">Đăng xuất</a>
         </div>
     </div>
 
     <div class="main">
-        <iframe name="mainframe" src="/QLT/views/mainframe.jsp"></iframe>
+        <iframe name="mainAframe" src="/QLT/views/mainframe.jsp"></iframe>
     </div>
 </body>
 </html>

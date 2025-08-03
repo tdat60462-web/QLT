@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/admin/station")
+@WebServlet("/admin/station-admin")
 public class AdminStationServlet extends HttpServlet {
     private StationBO stationBO = new StationBO();
 
