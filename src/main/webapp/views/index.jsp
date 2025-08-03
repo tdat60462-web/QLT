@@ -81,7 +81,7 @@
             <a href="/QLT/public/trainSchedule" target="mainframe">Lịch trình</a>
             <a href="/QLT/public/route" target="mainframe">Tuyến đường</a>
             <a href="/QLT/views/public/contact.jsp" target="mainframe">Liên hệ - Phản hồi</a>
-            <a href="/QLT/views/admin/login.jsp" target="mainframe" class="login-btn">Đăng nhập</a>
+            <a href="/QLT/views/admin/login.jsp" class="login-btn">Đăng nhập</a>
         </div>
     </div>
     <div class="main">
