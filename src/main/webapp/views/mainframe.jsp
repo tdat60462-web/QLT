@@ -43,11 +43,11 @@
 </head>
 <body>
     <div class="main-box">
-        <img src="https://i.imgur.com/2QZb6zB.jpg" alt="Train" class="main-img" />
+        <img src="<%=request.getContextPath()%>/images/train.jpg" alt="Train" class="main-img" />
         <div class="main-title">Hệ thống quản lý lịch tàu</div>
         <div class="main-desc">
             Chào mừng bạn đến với hệ thống quản lý lịch tàu!<br>
-            Tra cứu thông tin tàu, lịch trình, ga, đặt vé và quản lý dễ dàng.<br>
+            Tra cứu thông tin tàu, lịch trình, ga và quản lý dễ dàng.<br>
             Vui lòng chọn chức năng ở menu phía trên để bắt đầu.
         </div>
     </div>

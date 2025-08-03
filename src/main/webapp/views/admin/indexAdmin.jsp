@@ -98,12 +98,12 @@
             <a href="/QLT/views/admin/ticket-index.jsp" target="mainframe">Vé</a>
             <a href="/QLT/views/admin/passenger-index.jsp" target="mainframe">Hành khách</a>
             <a href="/QLT/views/admin/stats-index.jsp" target="mainframe">Thống kê</a>
-            <a href="/QLT/views/indexmenu.jsp" class="logout-btn">Đăng xuất</a>
+            <a href="/QLT/views/index.jsp" class="logout-btn">Đăng xuất</a>
         </div>
     </div>
 
     <div class="main">
-        <iframe name="mainframe" src="/QLT/views/admin/dashboard.jsp"></iframe>
+        <iframe name="mainframe" src="/QLT/views/mainframe.jsp"></iframe>
     </div>
 </body>
 </html>
