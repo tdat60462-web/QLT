@@ -8,8 +8,8 @@ public class Schedule {
     private String trainName;
     private String departureStation;
     private String arrivalStation;
-    private String departureTime;
-    private String arrivalTime;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
     private int availableSeats;
 
     public int getScheduleId() { return scheduleId; }
@@ -27,11 +27,11 @@ public class Schedule {
     public String getArrivalStation() { return arrivalStation; }
     public void setArrivalStation(String arrivalStation) { this.arrivalStation = arrivalStation; }
 
-    public String getDepartureTime() { return departureTime; }
-    public void setDepartureTime(String departureTime) { this.departureTime = departureTime; }
+    public LocalDateTime getDepartureTime() { return departureTime; }
+    public void setDepartureTime(LocalDateTime departureTime) { this.departureTime = departureTime; }
 
-    public String getArrivalTime() { return arrivalTime; }
-    public void setArrivalTime(String arrivalTime) { this.arrivalTime = arrivalTime; }
+    public LocalDateTime getArrivalTime() { return arrivalTime; }
+    public void setArrivalTime(LocalDateTime arrivalTime) { this.arrivalTime = arrivalTime; }
 
     public int getAvailableSeats() { return availableSeats; }
     public void setAvailableSeats(int availableSeats) { this.availableSeats = availableSeats; }
