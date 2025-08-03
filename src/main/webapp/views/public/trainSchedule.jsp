@@ -1,23 +1,23 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Train Schedule</title>
+    <title>Lịch trình tàu</title>
     <style>
         body {
             font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
-            background: #fff;
+            background: #f8f9fa;
             color: #222;
             margin: 0;
         }
-        .box {
+        .container {
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.10);
             padding: 32px;
             margin: 32px auto;
-            max-width: 700px;
+            max-width: 1000px;
         }
         h2 {
             color: #1e90ff;
@@ -32,18 +32,33 @@
         }
         th, td {
             border: 1px solid #e0e0e0;
-            padding: 10px 14px;
+            padding: 12px 16px;
             text-align: left;
         }
         th {
             background: #f5f5f5;
             color: #222;
         }
+        .action-btn {
+            background: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            margin-right: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .action-btn:hover {
+            background: #1565c0;
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>Train Schedule</h2>
+    <div class="container">
+        <h2>Lịch trình tàu</h2>
         <%@ page import="java.sql.*, java.util.*" %>
         <%
             List<Map<String, String>> trains = new ArrayList<>();
@@ -71,18 +86,18 @@
                     trains.add(row);
                 }
                 rs.close(); st.close(); conn.close();
-            } catch (Exception e) { out.print("<tr><td colspan='8' style='color:red;text-align:center;'>Database connection error!</td></tr>"); }
+            } catch (Exception e) { out.print("<tr><td colspan='8' style='color:red;text-align:center;'>Lỗi kết nối CSDL!</td></tr>"); }
         %>
         <table>
             <tr>
-                <th>Train ID</th>
-                <th>Train Name</th>
-                <th>Type</th>
-                <th>Route ID</th>
-                <th>Departure Station</th>
-                <th>Arrival Station</th>
-                <th>Departure Time</th>
-                <th>Arrival Time</th>
+                <th>Mã tàu</th>
+                <th>Tên tàu</th>
+                <th>Loại tàu</th>
+                <th>Mã tuyến</th>
+                <th>Ga đi</th>
+                <th>Ga đến</th>
+                <th>Giờ xuất phát</th>
+                <th>Giờ đến</th>
             </tr>
             <% for (Map<String, String> t : trains) { %>
             <tr>
@@ -97,7 +112,6 @@
             </tr>
             <% } %>
         </table>
-        <p style="text-align:center;color:#888;">(Data from: train, route, station, schedule)</p>
     </div>
 </body>
 </html>

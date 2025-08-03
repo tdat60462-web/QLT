@@ -7,7 +7,6 @@ import java.util.List;
 
 public class RouteDAO {
     private Connection getConnection() throws SQLException {
-        // TODO: Kết nối tới database, ví dụ dùng DriverManager
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
     }
 
