@@ -25,7 +25,7 @@ public class AdminLoginServlet extends HttpServlet {
         if (adminBO.checkLogin(username, password)) {
             HttpSession session = request.getSession();
             session.setAttribute("admin", username);
-            response.sendRedirect("/admin/train");
+            response.sendRedirect(request.getContextPath() + "/views/admin/indexAdmin.jsp");
         } else {
             request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu!");
             request.getRequestDispatcher("/views/admin/login.jsp").forward(request, response);

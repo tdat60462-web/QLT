@@ -8,7 +8,7 @@ import java.util.List;
 public class TrainDAO {
     // Chức năng searchTrains không còn phù hợp với bảng mới, chỉ giữ lại getAllTrains, getTrainById, addTrain, updateTrain, deleteTrain
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/qlt";
+        String url = "jdbc:mysql://localhost:3306/train_schedule_db";
         String user = "root";
         String password = "";
         try {

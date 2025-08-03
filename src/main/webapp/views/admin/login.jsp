@@ -77,7 +77,7 @@
 <body>
     <div class="login-box">
         <h2>Đăng nhập quản trị</h2>
-        <form method="post" action="/admin/login">
+        <form method="post" action="${pageContext.request.contextPath}/admin/login">
             <div class="form-row">
                 <label for="username">Tên đăng nhập:</label>
                 <input type="text" id="username" name="username" required />

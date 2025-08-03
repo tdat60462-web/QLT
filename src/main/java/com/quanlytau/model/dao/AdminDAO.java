@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class AdminDAO {
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/qlt";
+        String url = "jdbc:mysql://localhost:3306/train_schedule_db";
         String user = "root";
         String password = "";
         try {
@@ -17,7 +17,7 @@ public class AdminDAO {
     }
 
     public Admin getAdminByUsername(String username) {
-        String sql = "SELECT * FROM admin WHERE username = ?";
+        String sql = "SELECT * FROM user WHERE username = ? AND role = 'admin'";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, username);

@@ -12,6 +12,6 @@ public class AdminBO {
 
     public boolean checkLogin(String username, String password) {
         Admin admin = getAdminByUsername(username);
-        return admin != null && admin.getPassword().equals(password);
+        return admin != null && admin.getPassword().trim().equals(password.trim());
     }
 }

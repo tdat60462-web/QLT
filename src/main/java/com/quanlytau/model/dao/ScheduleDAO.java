@@ -8,12 +8,12 @@ import java.util.List;
 
 public class ScheduleDAO {
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "username", "password");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
     }
 
     public List<Schedule> getAllSchedules() {
         List<Schedule> schedules = new ArrayList<>();
-        String sql = "SELECT * FROM Schedule";
+        String sql = "SELECT * FROM schedule";
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Schedule s = new Schedule();
@@ -29,7 +29,7 @@ public class ScheduleDAO {
     }
 
     public Schedule getScheduleById(int scheduleId) {
-        String sql = "SELECT * FROM Schedule WHERE schedule_id = ?";
+        String sql = "SELECT * FROM schedule WHERE schedule_id = ?";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, scheduleId);
             try (ResultSet rs = ps.executeQuery()) {
@@ -48,7 +48,7 @@ public class ScheduleDAO {
     }
 
     public boolean addSchedule(Schedule s) {
-        String sql = "INSERT INTO Schedule (route_id, departure_time, arrival_time, available_seats) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO schedule (route_id, departure_time, arrival_time, available_seats) VALUES (?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, s.getRouteId());
             ps.setTimestamp(2, Timestamp.valueOf(s.getDepartureTime()));

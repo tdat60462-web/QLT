@@ -8,12 +8,12 @@ import java.util.List;
 public class RouteDAO {
     private Connection getConnection() throws SQLException {
         // TODO: Kết nối tới database, ví dụ dùng DriverManager
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "username", "password");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
     }
 
     public List<Route> getAllRoutes() {
         List<Route> routes = new ArrayList<>();
-        String sql = "SELECT * FROM Route";
+        String sql = "SELECT * FROM route";
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Route route = new Route();
@@ -31,7 +31,7 @@ public class RouteDAO {
     }
 
     public Route getRouteById(int routeId) {
-        String sql = "SELECT * FROM Route WHERE route_id = ?";
+        String sql = "SELECT * FROM route WHERE route_id = ?";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, routeId);
             try (ResultSet rs = ps.executeQuery()) {
@@ -52,7 +52,7 @@ public class RouteDAO {
     }
 
     public boolean addRoute(Route route) {
-        String sql = "INSERT INTO Route (train_id, departure_station_id, arrival_station_id, duration) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO route (train_id, departure_station_id, arrival_station_id, duration) VALUES (?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, route.getTrainId());
             ps.setInt(2, route.getDepartureStationId());

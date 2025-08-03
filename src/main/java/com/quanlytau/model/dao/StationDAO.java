@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StationDAO {
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/qlt";
+        String url = "jdbc:mysql://localhost:3306/train_schedule_db";
         String user = "root";
         String password = "";
         try {

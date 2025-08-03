@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PassengerDAO {
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "username", "password");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/train_schedule_db", "root", "");
     }
 
     public List<Passenger> getAllPassengers() {
