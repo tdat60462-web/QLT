@@ -27,7 +27,7 @@
         }
         .add-btn {
             display: inline-block;
-            background: #1e90ff;
+            background: #43a047;
             color: #fff;
             padding: 10px 24px;
             border-radius: 8px;
@@ -37,7 +37,7 @@
             transition: background 0.2s;
         }
         .add-btn:hover {
-            background: #1565c0;
+            background: #2e7d32;
         }
         table {
             border-collapse: collapse;
@@ -67,6 +67,12 @@
         }
         .action-btn:hover {
             background: #1565c0;
+        }
+        .delete-btn {
+            background: #e53935;
+        }
+        .delete-btn:hover {
+            background: #b71c1c;
         }
     </style>
 </head>
@@ -104,7 +110,7 @@
             <td><%= sch.getAvailableSeats() %></td>
             <td>
                 <a class="action-btn" href="/admin/schedule?action=edit&id=<%= sch.getScheduleId() %>">Sửa</a>
-                <a class="action-btn" href="/admin/schedule?action=delete&id=<%= sch.getScheduleId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
+                <a class="action-btn delete-btn" href="/admin/schedule?action=delete&id=<%= sch.getScheduleId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
             </td>
         </tr>
         <% } %>

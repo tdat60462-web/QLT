@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +27,7 @@
         }
         .add-btn {
             display: inline-block;
-            background: #1e90ff;
+            background: #43a047;
             color: #fff;
             padding: 10px 24px;
             border-radius: 8px;
@@ -38,7 +37,7 @@
             transition: background 0.2s;
         }
         .add-btn:hover {
-            background: #1565c0;
+            background: #2e7d32;
         }
         table {
             border-collapse: collapse;
@@ -69,13 +68,19 @@
         .action-btn:hover {
             background: #1565c0;
         }
+        .delete-btn {
+            background: #e53935;
+        }
+        .delete-btn:hover {
+            background: #b71c1c;
+        }
     </style>
 </head>
 <body>
 <%@ include file="logout-link.jsp" %>
 <div class="container">
     <h2>Danh sách ga tàu</h2>
-    <a class="add-btn" href="/QLT/views/admin/station-register.jsp">Thêm ga tàu mới</a>
+    <a class="add-btn" href="/QLT/views/admin/station-register.jsp">Thêm ga mới</a>
     <%@ page import="java.util.*, com.quanlytau.model.bean.Station" %>
     <%
         List<Station> stations = (List<Station>) request.getAttribute("stations");
@@ -95,7 +100,7 @@
             <td><%= s.getAddress() %></td>
             <td>
                 <a class="action-btn" href="/admin/station?action=edit&id=<%= s.getStationId() %>">Sửa</a>
-                <a class="action-btn" href="/admin/station?action=delete&id=<%= s.getStationId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
+                <a class="action-btn delete-btn" href="/admin/station?action=delete&id=<%= s.getStationId() %>" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
             </td>
         </tr>
         <% } %>
