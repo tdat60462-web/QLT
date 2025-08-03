@@ -3,6 +3,15 @@ package com.quanlytau.model.bean;
 import java.time.LocalDateTime;
 
 public class Schedule {
+    // Setter cho departureTime nhận LocalDateTime (dùng cho DAO)
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    // Setter cho arrivalTime nhận LocalDateTime (dùng cho DAO)
+    public void setArrivalTime(LocalDateTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
     public String getDepartureTimeAsString() {
         return departureTime != null ? departureTime.toString().replace('T', ' ') : "";
     }

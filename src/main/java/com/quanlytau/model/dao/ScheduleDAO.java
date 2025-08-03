@@ -60,7 +60,7 @@ public class ScheduleDAO {
     }
 
     public boolean updateSchedule(Schedule s) {
-        String sql = "UPDATE Schedule SET route_id=?, departure_time=?, arrival_time=?, available_seats=? WHERE schedule_id=?";
+        String sql = "UPDATE schedule SET route_id=?, departure_time=?, arrival_time=?, available_seats=? WHERE schedule_id=?";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, s.getRouteId());
             ps.setTimestamp(2, Timestamp.valueOf(s.getDepartureTime()));
@@ -73,7 +73,7 @@ public class ScheduleDAO {
     }
 
     public boolean deleteSchedule(int scheduleId) {
-        String sql = "DELETE FROM Schedule WHERE schedule_id=?";
+        String sql = "DELETE FROM schedule WHERE schedule_id=?";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, scheduleId);
             return ps.executeUpdate() > 0;
