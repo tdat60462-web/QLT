@@ -29,8 +29,7 @@
             text-align: center;
         }
         .add-btn {
-            display: inline-block;
-            background: #1e90ff;
+            background: #43a047;
             color: #fff;
             padding: 10px 24px;
             border-radius: 8px;
@@ -38,9 +37,10 @@
             text-decoration: none;
             margin-bottom: 18px;
             transition: background 0.2s;
+            display: inline-block;
         }
         .add-btn:hover {
-            background: #1565c0;
+            background: #2e7d32;
         }
         table {
             border-collapse: collapse;
@@ -70,6 +70,12 @@
         }
         .action-btn:hover {
             background: #1565c0;
+        }
+        .delete-btn {
+            background: #e53935;
+        }
+        .delete-btn:hover {
+            background: #b71c1c;
         }
     </style>
 </head>
@@ -107,8 +113,16 @@
             <td><%= tk.getDepartureTime() %></td>
             <td><%= tk.getArrivalTime() %></td>
             <td>
-                <a class="action-btn" href="#">Xem</a>
-                <a class="action-btn" href="#">Xóa</a>
+                <form method="post" action="/admin/ticket" style="display:inline;">
+                    <input type="hidden" name="action" value="view" />
+                    <input type="hidden" name="ticketId" value="<%= tk.getTicketId() %>" />
+                    <button class="action-btn" type="submit">Xem</button>
+                </form>
+                <form method="post" action="/admin/ticket" style="display:inline;" onsubmit="return confirm('Bạn có chắc muốn xóa vé này?');">
+                    <input type="hidden" name="action" value="delete" />
+                    <input type="hidden" name="ticketId" value="<%= tk.getTicketId() %>" />
+                    <button class="action-btn delete-btn" type="submit">Xóa</button>
+                </form>
             </td>
         </tr>
         <%
