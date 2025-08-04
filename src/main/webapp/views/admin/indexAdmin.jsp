@@ -91,19 +91,20 @@
         <div class="logo">QLT Admin</div>
         <div class="nav">
             <a href="/QLT/views/admin/indexAdmin.jsp" >Trang chủ</a>
-            <a href="/QLT/admin/station" target="mainAframe">Ga</a>
-            <a href="/QLT/admin/train-general" target="mainAframe">Tàu</a>
-            <a href="/QLT/admin/route" target="mainAframe">Tuyến đường</a>
-            <a href="/QLT/admin/schedule" target="mainAframe">Lịch trình</a>
-            <a href="/QLT/admin/ticket" target="mainAframe">Vé</a>
-            <a href="/QLT/admin/passenger" target="mainAframe">Hành khách</a>
-            <a href="/QLT/admin/stats" target="mainAframe">Thống kê</a>
+            <a href="/QLT/admin/station" target="mainframe">Ga</a>
+            <a href="/QLT/admin/train-general" target="mainframe">Tàu</a>
+            <a href="/QLT/admin/route" target="mainframe">Tuyến đường</a>
+            <a href="/QLT/admin/schedule" target="mainframe">Lịch trình</a>
+            <a href="/QLT/admin/ticket" target="mainframe">Vé</a>
+            <a href="/QLT/admin/passenger" target="mainframe">Hành khách</a>
+            <a href="/QLT/admin/stats" target="mainframe">Thống kê</a>
+            <a href="/baoDT/views/search.jsp" target="mainframe"><img src="https://cdn-icons-png.flaticon.com/512/54/54481.png"  alt="search" width="22" style="vertical-align:middle;opacity:0.7;filter: brightness(0) invert(1);"></a>
             <a href="/QLT/views/index.jsp" class="logout-btn">Đăng xuất</a>
         </div>
     </div>
 
     <div class="main">
-        <iframe name="mainAframe" src="/QLT/views/mainframe.jsp"></iframe>
+        <iframe name="mainframe" src="/QLT/views/mainframe.jsp"></iframe>
     </div>
 </body>
 </html>
