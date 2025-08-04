@@ -13,7 +13,13 @@ public class ScheduleDAO {
 
     public List<Schedule> getAllSchedules() {
         List<Schedule> schedules = new ArrayList<>();
-        String sql = "SELECT * FROM schedule";
+        String sql = "SELECT sch.schedule_id, sch.route_id, sch.departure_time, sch.arrival_time, sch.available_seats, " +
+                "t.name AS train_name, s1.name AS departure_station, s2.name AS arrival_station " +
+                "FROM schedule sch " +
+                "JOIN route r ON sch.route_id = r.route_id " +
+                "JOIN train t ON r.train_id = t.train_id " +
+                "JOIN station s1 ON r.departure_station_id = s1.station_id " +
+                "JOIN station s2 ON r.arrival_station_id = s2.station_id";
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Schedule s = new Schedule();
@@ -22,6 +28,9 @@ public class ScheduleDAO {
                 s.setDepartureTime(rs.getTimestamp("departure_time").toLocalDateTime());
                 s.setArrivalTime(rs.getTimestamp("arrival_time").toLocalDateTime());
                 s.setAvailableSeats(rs.getInt("available_seats"));
+                s.setTrainName(rs.getString("train_name"));
+                s.setDepartureStation(rs.getString("departure_station"));
+                s.setArrivalStation(rs.getString("arrival_station"));
                 schedules.add(s);
             }
         } catch (SQLException e) { e.printStackTrace(); }
