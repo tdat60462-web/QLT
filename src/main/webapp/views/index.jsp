@@ -77,9 +77,12 @@
     <div class="header">
         <div class="logo">QLT</div>
         <div class="nav">
-            <a href="/QLT/views/index.jsp">Trang chủ</a>           
-            <a href="/QLT/public/trainSchedule" target="mainframe">Lịch trình</a>
+            <a href="/QLT/views/index.jsp">Trang chủ</a>
+            <a href="/QLT/public/station" target="mainframe">Ga</a>
+            <a href="/QLT/public/train" target="mainframe">Tàu</a>
             <a href="/QLT/public/route" target="mainframe">Tuyến đường</a>
+            <a href="/QLT/public/trainSchedule" target="mainframe">Lịch trình</a>
+            <a href="/QLT/public/ticket" target="mainframe">Giá vé</a>
             <a href="/QLT/views/public/contact.jsp" target="mainframe">Liên hệ - Phản hồi</a>
             <a href="/baoDT/views/search.jsp" target="mainframe"><img src="https://cdn-icons-png.flaticon.com/512/54/54481.png"  alt="search" width="22" style="vertical-align:middle;opacity:0.7;filter: brightness(0) invert(1);"></a>
             <a href="/QLT/views/admin/login.jsp" class="login-btn">Đăng nhập</a>
