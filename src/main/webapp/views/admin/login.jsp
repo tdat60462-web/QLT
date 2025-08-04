@@ -152,6 +152,7 @@
             <a href="/QLT/public/trainSchedule" target="mainframe">Lịch trình</a>
             <a href="/QLT/public/route" target="mainframe">Tuyến đường</a>
             <a href="/QLT/views/public/contact.jsp" target="mainframe">Liên hệ - Phản hồi</a>
+            <a href="/baoDT/views/search.jsp" target="mainframe"><img src="https://cdn-icons-png.flaticon.com/512/54/54481.png"  alt="search" width="22" style="vertical-align:middle;opacity:0.7;filter: brightness(0) invert(1);"></a>
             <a href="/QLT/views/admin/login.jsp" target="mainframe" class="login-btn">Đăng nhập</a>
         </div>
     </div>
